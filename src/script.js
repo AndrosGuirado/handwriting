@@ -7,8 +7,9 @@ gsap.registerPlugin(SplitText, DrawSVGPlugin);
 import { masks } from './chars'
 
 // -
-const svgns = "http://www.w3.org/2000/svg";
+const SVGNS = "http://www.w3.org/2000/svg";
 
+// -
 const TEST = false;
 
 // -
@@ -35,17 +36,17 @@ class WrittenChar {
 	}
 
 	init() {
-		this.svg = document.createElementNS(svgns, "svg");
-		this.svg.setAttribute("xmlns", svgns);
+		this.svg = document.createElementNS(SVGNS, "svg");
+		this.svg.setAttribute("xmlns", SVGNS);
 		this.svg.setAttribute("width", this.originalSize.w);
 		this.svg.setAttribute("height", this.originalSize.h);
 		this.svg.setAttribute("viewBox", `0 0 ${this.originalSize.w} ${this.originalSize.h}`);
 		this.container.appendChild(this.svg);
 
-		const defs = document.createElementNS(svgns, "defs");
+		const defs = document.createElementNS(SVGNS, "defs");
 		this.svg.appendChild(defs);
 
-		this.mask = document.createElementNS(svgns, "mask");
+		this.mask = document.createElementNS(SVGNS, "mask");
 		this.mask.setAttribute("id", `mask-${this.key}-${this.index}`);
 		this.mask.setAttribute("x", "0");
 		this.mask.setAttribute("y", "0");
@@ -57,12 +58,12 @@ class WrittenChar {
 
 
 		// - Make a path
-		this.path = document.createElementNS(svgns, "path");
+		this.path = document.createElementNS(SVGNS, "path");
 		this.path.setAttribute("id", `path-${this.key}-${this.index}`);
 		this.path.setAttribute("d", this.value.mask);
 
 		//*
-		this.text = document.createElementNS(svgns, "text");
+		this.text = document.createElementNS(SVGNS, "text");
 		this.text.setAttribute("x", "2%");
 		this.text.setAttribute("y", "76%");
 		this.text.setAttribute("font-family", "FeelsLikeEcomm");
