@@ -1,0 +1,26 @@
+{
+  "name": "esbuild-project",
+  "version": "1.0.0",
+  "description": "ESBuild project",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run build:js && npm run build:pug && npm run build:stylus",
+    "build:js": "esbuild src/script.js --bundle --outfile=dist/bundle.js",
+    "build:pug": "pug src/views -o dist",
+    "build:stylus": "stylus src/styles -o dist/css",
+    "dev:js": "esbuild src/script.js --bundle --outfile=dist/bundle.js --watch",
+    "dev:pug": "pug src/views -o dist -w",
+    "dev:stylus": "stylus src/styles -o dist/css -w",
+    "dev": "npm run dev:pug & npm run dev:stylus & npm run dev:js"
+  },
+  "devDependencies": {
+    "esbuild": "^0.20.1",
+    "pug": "^3.0.3",
+    "pug-cli": "^1.0.0-alpha6",
+    "stylus": "^0.60.0"
+  },
+  "dependencies": {
+    "gsap": "^3.13.0",
+    "splitting": "^1.1.0"
+  }
+}
