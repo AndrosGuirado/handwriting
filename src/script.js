@@ -13,7 +13,7 @@ const TEST = false;
 
 // -
 class WrittenChar {
-	constructor(container, char, value, key, color, speed, delay, index, ease) {
+	constructor(container, char, value, key, speed, delay, index, ease) {
 		this.speed = speed || 200;
 		this.delay = delay || 0;
 
@@ -23,7 +23,7 @@ class WrittenChar {
 		this.char = char;
 		this.value = value;
 		this.key = key;
-		this.color = color || '#000';
+		this.color = '#000';
 		this.index = index;
 		// -
 		this.originalSize = { w: this.value.w, h: this.value.h };
@@ -109,7 +109,7 @@ class WrittenChar {
 }
 
 
-function writeText(element, color = '#000', speed = 0.1, charDelay = 0.0, wordDelay = 0.0, ease = 'sine.in') {
+function writeText(element, speed = 0.1, charDelay = 0.0, wordDelay = 0.0, ease = 'sine.in') {
 	// -
 	const splitText = new SplitText(element, {
 		type: "words,chars",
@@ -128,7 +128,7 @@ function writeText(element, color = '#000', speed = 0.1, charDelay = 0.0, wordDe
 					if (key) {
 						const value = masks[key];
 						if (value) {
-							new WrittenChar(container, char, value, key, color, speed, delay, index, ease);
+							new WrittenChar(container, char, value, key, speed, delay, index, ease);
 							index++;
 							delay += charDelay;
 						}
@@ -140,4 +140,4 @@ function writeText(element, color = '#000', speed = 0.1, charDelay = 0.0, wordDe
 	});
 }
 
-writeText(document.querySelector('.written-text'), '#000', .220, .222, 0.2, 'sine.out');
+writeText(document.querySelector('.written-text'), .170, .172, 0.05, 'sine.out');
