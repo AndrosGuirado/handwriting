@@ -96,7 +96,7 @@ class WrittenChar {
 			strokeLinejoin: 'round'
 		});
 
-		//const duration = this.path.getTotalLength() / this.speed;
+		this.speed *= 1 + (this.path.getTotalLength() * 0.001);
 
 		gsap.from(this.path, {
 			duration: this.speed,
@@ -140,4 +140,4 @@ function writeText(element, speed = 0.1, charDelay = 0.0, wordDelay = 0.0, ease 
 	});
 }
 
-writeText(document.querySelector('.written-text'), .170, .172, 0.05, 'sine.out');
+writeText(document.querySelector('.written-text'), .52, .15, .1, 'power4.out');
