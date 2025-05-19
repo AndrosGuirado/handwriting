@@ -59,6 +59,12 @@
           - div.price__sale: Displayed when a variant is a sale
       {%- endcomment -%}
       <div class="price__regular">
+
+				<svg width="35" height="8" viewBox="0 0 35 8" fill="none" xmlns="http://www.w3.org/2000/svg" class="underline-animation">
+					<path d="M0.925781 5.47766L34.125 0.624634L5.1172 7.24239C12.8747 5.62472 29.1176 2.52172 32.0295 3.05114" stroke="black" stroke-width="0.5"/>
+				</svg>
+
+
         {%- if product.quantity_price_breaks_configured? -%}
           {%- if show_compare_at_price and compare_at_price -%}
             {%- unless product.price_varies == false and product.compare_at_price_varies %}
@@ -77,7 +83,7 @@
             {%- endunless -%}
           {%- endif -%}
           <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.regular_price' | t }}</span>
-          <span class="price-item price-item--regular written-text" written-delay="3">
+          <span class="price-item price-item--regular written-text" written-delay="3" onEndAnimation=".underline-animation">
             {{-
               'products.product.volume_pricing.price_range'
               | t: minimum: money_price_min, maximum: money_price_max
@@ -85,7 +91,7 @@
           </span>
         {%- else -%}
           <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.regular_price' | t }}</span>
-          <span class="price-item price-item--regular written-text" written-delay="3">
+          <span class="price-item price-item--regular written-text" written-delay="3" onEndAnimation=".underline-animation">
             {{ money_price }}
           </span>
         {%- endif -%}

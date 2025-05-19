@@ -192,6 +192,45 @@ document.addEventListener("DOMContentLoaded", (event) => {
 		}
 	}
 
+	class UnderlineAnimation {
+		constructor(underlineAnimation) {
+			this.path = underlineAnimation.querySelector('path');
+			// -
+			this.speedIn = Math.random() * 0.2 + 0.2;
+			this.easeIn = 'power2.inOut';
+			// -
+			this.speedOut = Math.random() * 0.2 + 0.2;
+			this.easeOut = 'power2.inOut';
+			// -
+			this.init();
+		}
+
+		init() {
+			gsap.set(this.path, {
+				rotation: (Math.random() * 10 - 5),
+				transformOrigin: 'center center',
+				drawSVG: 0
+			});
+		}
+
+		animate(delay = 0.0) {
+			gsap.to(this.path, {
+				duration: this.speedIn,
+				delay: delay,
+				ease: this.easeIn,
+				drawSVG: this.path.getTotalLength(),
+				overwrite: 'auto'
+			});
+		}
+		reset() {
+			gsap.to(this.path, {
+				duration: this.speedOut,
+				ease: this.easeOut,
+				drawSVG: 0,
+			});
+		}
+	}
+
 	// - Init
 	const writtenTexts = document.querySelectorAll('.written-text');
 	let index = 0;
@@ -201,9 +240,34 @@ document.addEventListener("DOMContentLoaded", (event) => {
 		index++;
 	}
 
-	// -
+	// - Enclose Animations
 	const encloseButtons = document.querySelectorAll('.button--enclose-animation');
 	for (const button of encloseButtons) {
 		new EncloseAnimationButton(button);
+	}
+
+	// - Products grid
+	const productsGrid = document.querySelectorAll('.product-grid .grid__item');
+	for (const product of productsGrid) {
+		const underlineAnimationsElements = product.querySelectorAll('.underline-animation');
+		const underlineAnimations = [];
+		for (const underlineAnimationElement of underlineAnimationsElements) {
+			const underlineAnimation = new UnderlineAnimation(underlineAnimationElement);
+			underlineAnimations.push(underlineAnimation);
+		}
+
+		// - Init hover animations
+		setTimeout(() => {
+			product.addEventListener('pointerenter', () => {
+				for (const underlineAnimation of underlineAnimations) {
+					underlineAnimation.animate();
+				}
+			});
+			product.addEventListener('pointerleave', () => {
+				for (const underlineAnimation of underlineAnimations) {
+					underlineAnimation.reset();
+				}
+			});
+		}, 3000);
 	}
 });
