@@ -1157,10 +1157,15 @@ summary::-webkit-details-marker {
   left: 0;
   height: 100%;
   width: 100%;
+
+	object-fit: contain;
+  object-position: center center;
+  width: 86%;
+  margin: 0 auto;
 }
 
 .media > img {
-  object-fit: cover;
+  object-fit: contain;
   object-position: center center;
   transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -1212,7 +1217,7 @@ deferred-media {
   --color-button: var(--color-secondary-button);
   --color-button-text: var(--color-secondary-button-text);
   background-image: url(yellowLine.svg);
-  background-size: 120% 120%;
+  background-size: 120% 210%;
   background-repeat: no-repeat;
   background-position: center;
 }

@@ -105,7 +105,11 @@
 }
 
 .card-information {
-  text-align: var(--text-alignment);
+  display: flex;
+  flex-direction: column;
+  align-content: flex-end;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .card__media,
@@ -315,7 +319,7 @@
 
 .card__media .media img {
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center center;
   width: 100%;
 }
@@ -325,10 +329,9 @@
 }
 
 .card__heading {
-  font-size: 3rem;
-  rotate: 2deg;
+  font-size: 2.2rem;
   margin-top: 0;
-  margin-bottom: 0;
+  margin-bottom: -0.8rem;
 }
 
 .card__heading:last-child {
@@ -340,6 +343,10 @@
 .card--horizontal__quick-add {
   font-family: var(--font-heading-family);
   font-size: calc(var(--font-heading-scale) * 1.2rem);
+}
+
+.quick-add__submit {
+  font-size: calc(var(--font-heading-scale) * 2.8rem);
 }
 
 .card--horizontal
@@ -457,20 +464,20 @@
   padding: 0;
 }
 
-.card--standard > .card__content:first-of-type .card__information {
+.card--standard > .card__content .card__information {
   position: absolute;
   padding-left: 0;
   padding-right: 0;
-  bottom: 0rem;
-  left: 0rem;
-  mix-blend-mode: difference;
-}
-.card--standard > .card__content:nth-of-type(2) .card__information {
-  position: absolute;
-  padding-left: 0;
-  padding-right: 0;
-  bottom: 0rem;
-  left: 0rem;
+  top: 1rem;
+  left: 1rem;
+  rotate: -10deg;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .card--card.card--media .card__inner .card__information,
@@ -520,7 +527,7 @@
 }
 
 .card-information > .price {
-  rotate: -2deg;
+  text-align: right;
   --font-color: red;
   color: var(--font-color);
 }
