@@ -6,8 +6,20 @@
   z-index: 1;
 }
 
-.card--card .quick-add {
+.quick-add {
   margin: 0 1.3rem 1rem;
+}
+
+.quick-add .button-text {
+  position: relative;
+}
+
+.quick-add .button-text svg {
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
 }
 
 .quick-add-modal {

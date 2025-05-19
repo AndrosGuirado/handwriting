@@ -132,6 +132,66 @@ document.addEventListener("DOMContentLoaded", (event) => {
 		});
 	}
 
+	class EncloseAnimationButton {
+		constructor(button) {
+			this.button = button;
+			this.path = this.button.querySelector('.enclose path');
+			// -
+			this.strokeWidth = 1;
+			this.strokeColor = '#000';
+			this.strokeLinecap = 'round';
+			this.strokeLinejoin = 'round';
+			// -
+			this.speedIn = 0.25;
+			this.easeIn = 'power2.inOut';
+			// -
+			this.speedOut = 0.4;
+			this.easeOut = 'power2.inOut';
+
+			// -
+			this.init();
+		}
+
+		init() {
+			gsap.set(this.path, {
+				fill: 'none',
+				stroke: this.strokeColor,
+				strokeWidth: this.strokeWidth,
+				strokeLinecap: this.strokeLinecap,
+				strokeLinejoin: this.strokeLinejoin,
+				drawSVG: 0,
+				transformOrigin: 'center center',
+				rotation: (Math.random() < 0.5 ? 180 : 0) + (Math.random() * 10 - 5)
+			});
+
+			// - events
+			this.button.addEventListener('pointerenter', () => {
+				this.animate();
+			});
+			this.button.addEventListener('pointerleave', () => {
+				this.reset();
+			});
+		}
+
+		animate() {
+			gsap.to(this.path, {
+				duration: this.speedIn,
+				ease: this.easeIn,
+				drawSVG: this.path.getTotalLength(),
+				overwrite: 'auto'
+			});
+		}
+
+		reset() {
+			gsap.to(this.path, {
+				duration: this.speedOut,
+				ease: this.easeOut,
+				drawSVG: 0,
+				overwrite: 'auto'
+			});
+		}
+	}
+
 	// - Init
 	const writtenTexts = document.querySelectorAll('.written-text');
 	let index = 0;
@@ -139,5 +199,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
 		const delay = Number(writtenText.getAttribute('written-delay')) || 1;
 		writeText(writtenText, FeelsLikeEcomm_masks, index, .52, .15, .1, 'power4.out', delay);
 		index++;
+	}
+
+	// -
+	const encloseButtons = document.querySelectorAll('.button--enclose-animation');
+	for (const button of encloseButtons) {
+		new EncloseAnimationButton(button);
 	}
 });

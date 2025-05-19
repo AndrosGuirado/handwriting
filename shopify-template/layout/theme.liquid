@@ -16,7 +16,7 @@
 		
     <!-- THREE.JS -->
     <script src="{{ 'three.module.min.js' | asset_url }}" defer="async" type="module"></script>
-    <script type="module" src="{{ 'threejs-hero.js' | asset_url }}"></script>
+    <!-- <script type="module" src="{{ 'threejs-hero.js' | asset_url }}"></script> -->
 
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
@@ -25,6 +25,8 @@
     {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
+
+		<link rel="preload" as="font" href="{{ 'FeelsLikeEcomm.woff2' | asset_url }}" type="font/woff2" crossorigin>
 
     <title>
       {{ page_title }}

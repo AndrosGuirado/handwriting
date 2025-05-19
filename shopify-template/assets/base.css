@@ -1255,7 +1255,7 @@ button.shopify-payment-button__button--unbranded {
 .button-png {
   display: inline-block;
   width: 15.625rem;
-  height: 15.625rem;
+  height: auto;
   z-index: 100;
   position: absolute;
   top: 0;
@@ -3506,13 +3506,15 @@ details-disclosure > details {
     --easter-egg: none;
     --sparkle: url('./sparkle.gif');
     --font-body-family: 'Assistant', sans-serif;
-    --font-heading-family: 'FeelslikeEcommRegular';
+    --font-heading-family: 'FeelslikeEcommRegular', monospace;
   }
 
   @font-face {
     font-family: 'FeelslikeEcommRegular';
-    src: url('FeelsLikeEcomm.woff2') format('woff2');  
-    font-style: normal;
+    src: url( 'FeelsLikeEcomm.woff2' ) format('woff2');  
+    font-weight: normal;
+		font-style: normal;
+		font-display: swap;
   }
 
   .animate--hover-vertical-lift .button:not(.button--tertiary),
