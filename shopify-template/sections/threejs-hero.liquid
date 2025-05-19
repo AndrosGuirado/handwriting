@@ -1,0 +1,50 @@
+<div id="threejs-hero" class="hero-container">
+  <canvas id="hero-canvas"></canvas>
+</div>
+
+{% schema %}
+{
+  "name": "Three.js Hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "gallery_image_1",
+      "label": "Gallery Image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "gallery_image_2",
+      "label": "Gallery Image 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "gallery_image_3",
+      "label": "Gallery Image 3"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Three.js Hero Gallery",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+.hero-container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  background-color: blue;
+}
+
+#hero-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: red;
+}
+</style> 

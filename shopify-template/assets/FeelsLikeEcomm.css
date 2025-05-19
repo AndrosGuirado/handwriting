@@ -1,0 +1,21 @@
+.written-text .char-mask {
+  position: relative;
+}
+.written-text .char-mask .char {
+  font-size: 1em;
+  opacity: 0.1;
+  visibility: hidden;
+}
+.written-text .char-mask svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: auto;
+  height: 100%;
+  pointer-events: none;
+  font-family: var(--font-heading-family);
+}
+
+.written-text .char-mask svg text {
+  fill: var(--font-color);
+}

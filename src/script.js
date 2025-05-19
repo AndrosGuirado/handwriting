@@ -66,7 +66,7 @@ class WrittenChar {
 		this.text = document.createElementNS(SVGNS, "text");
 		this.text.setAttribute("x", "2%");
 		this.text.setAttribute("y", "76%");
-		this.text.setAttribute("font-family", "FeelsLikeEcomm");
+		this.text.setAttribute("font-family", "FeelslikeEcommRegular");
 		this.text.setAttribute("font-size", this.originalSize.h * 0.83);
 		this.text.setAttribute("font-weight", "100");
 		this.text.setAttribute("font-size-adjust", this.ratio);
