@@ -87,7 +87,7 @@
 }
 
 .card .card__inner .card__media {
-  overflow: hidden;
+  overflow: visible;
   /* Fix for Safari border bug on hover */
   z-index: 0;
   border-radius: calc(
@@ -420,12 +420,13 @@
 @media screen and (min-width: 990px) {
   .card .media.media--hover-effect > img:only-child,
   .card-wrapper .media.media--hover-effect > img:only-child {
-    transition: transform var(--duration-long) ease;
+    transition: transform 0.2s ease;
+    transform: scale(0.65) rotate(0deg);
   }
 
   .card:hover .media.media--hover-effect > img:first-child:only-child,
   .card-wrapper:hover .media.media--hover-effect > img:first-child:only-child {
-    transform: scale(1.03);
+    transform: scale(0.8) rotate(-2deg);
   }
 
   .card-wrapper:hover
@@ -437,7 +438,7 @@
   .card-wrapper:hover .media.media--hover-effect > img + img {
     opacity: 1;
     transition: transform var(--duration-long) ease;
-    transform: scale(1.03);
+    transform: scale(0.8) rotate(-2deg);
   }
 
   .underline-links-hover:hover a {
@@ -469,8 +470,8 @@
   padding-left: 0;
   padding-right: 0;
   top: 1rem;
-  left: 1rem;
-  rotate: -10deg;
+  right: 2rem;
+  rotate: 10deg;
 
   display: flex;
   flex-direction: row;
@@ -528,6 +529,7 @@
 
 .card-information > .price {
   text-align: right;
+  padding-right: 1em;
   --font-color: red;
   color: var(--font-color);
 }

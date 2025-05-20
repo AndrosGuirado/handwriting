@@ -153,6 +153,19 @@ document.addEventListener("DOMContentLoaded", (event) => {
 		}
 
 		init() {
+			this.setRotation();
+
+			// - events
+			this.button.addEventListener('pointerenter', () => {
+				this.setRotation();
+				this.animate();
+			});
+			this.button.addEventListener('pointerleave', () => {
+				this.reset();
+			});
+		}
+
+		setRotation() {
 			gsap.set(this.path, {
 				fill: 'none',
 				stroke: this.strokeColor,
@@ -162,14 +175,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
 				drawSVG: 0,
 				transformOrigin: 'center center',
 				rotation: (Math.random() < 0.5 ? 180 : 0) + (Math.random() * 10 - 5)
-			});
-
-			// - events
-			this.button.addEventListener('pointerenter', () => {
-				this.animate();
-			});
-			this.button.addEventListener('pointerleave', () => {
-				this.reset();
 			});
 		}
 

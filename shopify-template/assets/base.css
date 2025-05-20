@@ -1141,7 +1141,7 @@ summary::-webkit-details-marker {
   display: block;
   background-color: rgba(var(--color-foreground), 0.1);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .media--transparent {
@@ -1160,7 +1160,7 @@ summary::-webkit-details-marker {
 
 	object-fit: contain;
   object-position: center center;
-  width: 86%;
+  width: 100%;
   margin: 0 auto;
 }
 
